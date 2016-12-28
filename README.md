@@ -18,6 +18,3 @@ class AddNumbers
       System.out.println("Sum of entered integers = "+z);
    }
 }
-//AddNumbers Class
-//New comment from venkatasykam/JarProjects/Us_Branch
-  //New comment from venkatasykam/JarProjects/Mx_Branch
