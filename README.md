@@ -1,4 +1,6 @@
+
 # JarProjects - Mx_Dev branch
+
 import java.util.Scanner;
  
 class AddNumbers
@@ -17,4 +19,6 @@ class AddNumbers
       z = x + y;
       System.out.println("Sum of entered integers = "+z);
    }
+
 }
+//AddNumbers Class
