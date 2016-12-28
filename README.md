@@ -1,4 +1,4 @@
-# hello-world - Mx_Dev branch
+# JarProjects - Mx_Dev branch
 import java.util.Scanner;
  
 class AddNumbers
