@@ -1,5 +1,5 @@
 import java.util.Scanner;
- 
+
 class AddNumbers
 {
    //Sub Method
@@ -40,15 +40,4 @@ class AddNumbers
 	   public float div(int a, int b){
 	 return a/b;
    }
-	    //A comment from MainLine-FP9/JarProjects/ repo
-
-	   //A comment from venkatasykam/JarProjects/ repo
-	
-	   //A comment from venkatasykam/JarProjects/Us_Branch
-	   //A comment from venkatasykam/JarProjects/Mx_Branch
-
-	   //New comment from venkatasykam/JarProjects/Us_Branch
-
-	   //New comment from venkatasykam/JarProjects/Mx_Branch
 }
-//Three Methods
