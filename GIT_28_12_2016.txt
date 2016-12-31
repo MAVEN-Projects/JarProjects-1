@@ -1,0 +1,149 @@
+1. By default your repository has one branch named "master" which is considered to be the definitive/conclusive/final/ultimate branch.
+
+Practice-1.1:-
+-->Checkout the code to your machine:
+	1.1. Clone the branch you want.
+		git clone -b <brach_name> --single-branch <git_repo> <destination>
+		Ex: git clone -b Mx_Dev --single-branch https://github.com/venkatasykam/hello-world.git /d/hari/git/dummy/hello-world_mx
+
+-->Update coded & check-in to git "local" repo:-
+	1.2 Update the code on local, commit to local repo and then push to your git repo.
+	1.3. Modified a file and ADD a new file and run the comamnd "git status -s"
+		-->Added a new line in the file.
+		-->Updated the exisitng line.
+		-->Removed few number of lines.
+	1.4. See the diff b/w remote repo and local repo "git diff".
+	1.5. git commit -m "updated few files".-->committed to local repo.
+-->Push the local repo to GIT repo.
+	git push.
+
+Switch to other branch: git checkout -b <branchName>
+
+Practice-1.2:-
+How to Clone the branch(readme-edits) other than 'master' and modify the files and then commit to the repository 'readme-edits'.
+
+	2.1. Clone: http://stackoverflow.com/questions/17383217/clone-from-a-branch-other-than-master
+
+		git clone --help
+
+		Option-1:- Cloning "master" and then switch to other branch.
+		----------
+			git clone <url> <destination>
+
+				Ex: git clone https://github.com/venkatasykam/hello-world.git Dev_Branch
+
+			git branch -l
+			git checkout <branchname>
+				Ex: git checkout Dev_Branch
+			git branch -l
+
+		Option-2:- Clone the particular branch
+		----------
+			git clone -b <branch> <remote_repo>
+
+				Ex: git clone -b Us_Dev https://github.com/venkatasykam/hello-world.git hello_world_us
+
+	2.2. Updated something and commit to the branch.
+
+			git commit -am "updated AddNumbers.java file with subtraction method"
+
+	2.3. git push
+
+2. DIFF: (Create patch file and apply patch file):
+
+	git log --oneline --all
+	2.1. Diff b/w two revision numbers: git diff from-commit to-commit > output-file
+			from-commit – the point at which we want the patch to start. 
+			to-commit – the patch will span the changes up to and including this point.
+			output-file – the patch will be written here
+
+	2.2. Assume I had checkout the code and now my repo origin is 'Dev_Branch'. Then, modified few files. Checking the diff b/w local and remote repo.
+			git diff>patch.diff
+			
+			git apply patch.diff
+
+	git diff $(git merge-base <public branch> <experimental branch>) > <output file>
+
+		Example: git diff $(git merge-base master Dev_Branch) > anotherPatch.diff
+
+	git am 0001-updated-readme-file.patch --ignore-whitespace --no-scissors --ignore-space-change [not working]
+
+3. GIT merging two branches: https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging
+
+	3 branches: 
+
+4. Rename the existing branch:
+	4.1. switch to branch which needs to be renamed: git checkout -b <old_name>
+	4.2. git branch -m <new_name>
+	4.3. git push origin :<old_name>
+	4.4. git push origin <new_name>:refs/heads/<new_name>
+
+	OR 
+	4.1. git branch -m Dev_Branch Mx_Dev
+	4.2. git push origin :Dev_Branch
+	4.3. git push origin Mx_Dev
+
+	-->git branch -a -->Display all the branches which are there under the repo.
+
+	-->We can change the default branch from "master" to anyother. Click on the project(repo)-->settings-->branches-->here we can project the branches, and update default branch.
+
+	-->Rename/delete/transferOwnership/chnage the mode public or prtivate
+			repo: repo-->settings-->options
+
+	-->Adding user: repo-->settings-->collaborators
+
+	-->Check WebHooks on repo-->settings-->WebHooks in office
+
+	http://githooks.com/
+
+5. Transfer the repo to another organization or owner: https://help.github.com/articles/transferring-a-repository-owned-by-your-organization/
+
+	5.1. Go to project repo "JarProjects" under the organization "MainLinee-FP9".  https://github.com/MainLine-FP9/JarProjects
+	5.2. Settings-->Danzer Zone-->Click on "Transfer" button at "Transfer ownership".
+	5.3. In the window-->enter the repo name "JarProjects" and target "organization" name "Maintenance-FP9".
+
+6. Creating a new repo(in same organization or other organization) from exisitng repo at particular branch.
+ http://stackoverflow.com/questions/9527999/how-do-i-create-a-new-github-repo-from-a-branch-in-an-existing-repo
+ 
+	6.1. Create a new_repo. 
+			Ex: https://github.com/MainLine-FP9/new_repo.git [in anotehr org]
+			Ex: git push https://github.com/venkatasykam/new_repo.git +Us_Dev:master [under the same user]
+	6.2. Clone the existing repo to new folder or update("git pull") the cloned existing repo.
+			Ex: Existing repo https://github.com/venkatasykam/hello-world.git 
+			This repo has 3 branches Us_Dev, Mx_Dev, master, Now I want a new repo with the code base "Us_Dev".
+	6.3. git push https://github.com/MainLine-FP9/new_repo.git +Us_Dev:master
+		 git push tps://github.com/venkatasykam/new_repo.git +Us_Dev:master
+
+7. Branch to branch merge: https://help.github.com/articles/merging-a-pull-request/
+
+	7.1. https://github.com/venkatasykam/JarProjects has 3 branches. Us_Branch and Mx_Branch and master.
+	7.2. Updated a java file on "Us_Branch" and commited the changes. 
+	7.3. Master needs to be updated with "Us_Branch". Now, create Pull Request.
+	7.4. Here, "master" should be "base" and "compare" should be "Us_Branch". Otehrwise, GITHUB will not allow merge.
+	7.5. Now, "Us_Branch" & "Mx_Branch" have changes individually. Added a comment in the same line and both have different content.
+		7.5.1. If Auto-merge is NOT possible in this case, we have to update the file(s) Manually and resolve the conflicts.
+		Ex: base:Mx-branch , compare:Us_Branch
+		The manually resolved conflicts(i.e., the changes) will be saved to both the branches to not to repeat this same conflict again in future.
+		
+		7.5.2. If Auto-merge is possible, only the "base" branch will be merged with the changes from "compare". The changes in "compare:Us_Branch" will be remain same.
+
+8. Merge from one organization/repo to anotherOrganization/repo.
+
+	8.1. There should be a fork betweeen the two organizations. Ex: Created a fork b/w https://github.com/venkatasykam/JarProjects, and https://github.com/MainLine-FP9/, then the "JarProjects" has been created newly on https://github.com/MainLine-FP9/JarProjects. If the repo "JarProjects" is lareayd there in "MainLine-FP9", then GIT will create a new repo as "JarProjects-1". [Once if you create a "fork" b/w organization, we cant un-fork even if you re-name the repo.]
+	8.2. Made some changes in one java file "AddNumbers.java" from "venkatasykam/JarProjects". Now, Open a pull request.
+	8.3. Pull the changes from "venkatasykam/JarProjects" into "MainLine-FP9/JarProjects".
+	8.4. Now, making some chnages in one java file "AddNumbers.java" from "MainLine-FP9/JarProjects". Now, Open a pull request.
+	8.5. Pull the changes from "MainLine-FP9/JarProjects" into "venkatasykam/JarProjects".
+	8.6. Making changes in both the repos. Added a comment in the same line and both have different content.
+	8.7. Auto-merge is not possible in this case. Manually we have to update the file(s) and resolve the conflict(s).
+
+9. Merge from one git repo to another repo.
+
+	Basic example: merge repo B into repo A
+	git clone A
+	git clone B
+	cd A
+	git remote add B ../B
+	git fetch B
+	git branch B-master B/master
+	git merge B-master

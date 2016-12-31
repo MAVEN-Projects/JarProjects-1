@@ -1,5 +1,4 @@
 import java.util.Scanner;
-//Mainline FP9 comment
 class AddNumbers
 {
    //Sub Method
@@ -28,7 +27,9 @@ class AddNumbers
    //Add Method with 3 param
    public int add(int a, int b,int c){
    {return a+b+c;}
-	   
+	 //Add Method with 3 param
+   public int add(int a, int b,int c,int d){
+   {return a+b+c+d;}   
    public float div(int a, int b){
 	 return a/b;
    }
@@ -38,8 +39,4 @@ class AddNumbers
 	   public float div(int a, int b){
 	 return a/b;
    }
-	    //A comment from MainLine-FP9/JarProjects/ repo
-
-	   //A comment from venkatasykam/JarProjects/ repo
-}
-//Three Methods
+ }
