@@ -17,5 +17,8 @@ class AddNumbers
       z = x + y;
       System.out.println("Sum of entered integers = "+z);
    }
+   public int mul(int a, int b){
+	return a*b;
+   }
 }
 //AddNumbers Class
